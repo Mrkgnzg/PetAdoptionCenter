@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+{% block content %}
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Adoption Request Details</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Adopter: {{ adoption_request.adopter }}</h5>
+                <p><strong>Animal:</strong> {{ adoption_request.animal.name }}</p>
+                <p><strong>Address:</strong> {{ adoption_request.adopter_address }}</p>
+                <p><strong>Status:</strong> {{ adoption_request.status }}</p>
+                <p><strong>Request Date:</strong> {{ adoption_request.request_date }}</p>
+                {% if adoption_request.approval_date %}
+                    <p><strong>Approval Date:</strong> {{ adoption_request.approval_date }}</p>
+                {% endif %}
+                <a href="{% url 'adoption_request_update' adoption_request.pk %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'adoption_request_delete' adoption_request.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

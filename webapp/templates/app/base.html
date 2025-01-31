@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "{% static 'css/base.css'%}" ></link>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Pet Adoption</title>
+</head>
+<body>
+    {% include 'app/navbar.html'%}
+    {% block content%} 
+
+    {% endblock %} 
+
+    <footer class="text-center mt-5 py-4 bg-dark text-white">
+        <p>&copy; 2025 Pet Adoption Center</p>
+    </footer>
+</body>
+</html>

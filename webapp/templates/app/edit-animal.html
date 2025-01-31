@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %} 
+{%load static%}
+{% block content %}
+<form action="{% url 'edit-animal' object.pk %}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="update">
+<a href="{% url 'admin' %}">cancel</a>
+</form>
+{% endblock %}

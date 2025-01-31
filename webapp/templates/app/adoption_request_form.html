@@ -1,0 +1,52 @@
+{% extends 'app/base.html' %}
+{% block content %}
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <h2 class="text-center mb-4">Create Adoption Request</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <!-- Animal Field -->
+                            <div class="form-group">
+                                <label for="animal" class="form-label">Animal</label>
+                                {{ form.animal }}
+                            </div>
+                            
+                            <!-- Adopter Field -->
+                            <div class="form-group">
+                                <label for="adopter" class="form-label">Adopter's Name</label>
+                                {{ form.adopter }}
+                            </div>
+                            
+                            <!-- Adopter Address Field -->
+                            <div class="form-group">
+                                <label for="adopter_address" class="form-label">Adopter's Address</label>
+                                {{ form.adopter_address }}
+                            </div>
+                            
+                            <!-- Status Field -->
+                            <div class="form-group">
+                                <label for="status" class="form-label">Status</label>
+                                {{ form.status }}
+                            </div>
+                            
+                            <!-- Approval Date Field -->
+                            <div class="form-group">
+                                <label for="approval_date" class="form-label">Approval Date</label>
+                                {{ form.approval_date }}
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="form-group mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

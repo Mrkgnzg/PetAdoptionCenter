@@ -1,0 +1,109 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<header class="hero-section text-center text-white">
+    <div class="container">
+        <h1>Find Your New Best Friend</h1>
+        <p class="lead">Thousands of loving pets are waiting for a forever home.</p>
+        <a href="{% url 'animal_showcase' %}" class="btn btn-primary btn-lg">Start Adopting</a>
+    </div>
+</header>
+
+<section class="about-section text-center py-5">
+    <div class="container">
+        <h2>Who We Are</h2>
+        <p class="lead">We connect people with loving pets in need of a home. Join us in giving them a second chance!</p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <h2 class="text-center mb-4">Featured Pets</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="../../../media/animals/dog.jpg" class="card-img-top" alt="Pet 1">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Coby</h5>
+                    <p>Friendly and playful dog looking for a loving home.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="../../../media/animals/cat.jpg" class="card-img-top" alt="Pet 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Garfiel</h5>
+                    <p>An energetic kitten who loves to play!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="../../../media/animals/crocodile.jpg" class="card-img-top" alt="Pet 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Lacoste</h5>
+                    <p>A sweet, calm crocodile who loves cuddles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials-section bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Happy Adopters</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <blockquote class="blockquote text-center">
+                    <p>"Adopting Bella was the best decision ever! She brings so much joy to our family."</p>
+                    <footer class="blockquote-footer">Emily & Jake</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote text-center">
+                    <p>"Milo has been such a wonderful companion. Thank you for making adoption easy!"</p>
+                    <footer class="blockquote-footer">Sarah L.</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote text-center">
+                    <p>"Luna has found her forever home, and we couldn't be happier!"</p>
+                    <footer class="blockquote-footer">Mike & Anna</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section py-5" >
+    <div class="container" id="contact">
+        <h2 class="text-center mb-4">Get in Touch</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Write your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<section class="donation-section text-center py-5">
+    <div class="container">
+        <h2>Support Our Cause</h2>
+        <p class="lead">Your donations help us rescue, shelter, and find loving homes for pets in need.</p>
+        <a href="https://www.paypal.com/donate" class="btn btn-danger btn-lg" target="_blank">Donate Now</a>
+    </div>
+</section>
+{% endblock %}

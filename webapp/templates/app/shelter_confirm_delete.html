@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Delete Shelter</h2>
+    <p>Are you sure you want to delete <strong>{{ shelter.name }}</strong>?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'shelter-list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

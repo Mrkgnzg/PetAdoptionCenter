@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">{{ shelter.name }}</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Address:</strong> {{ shelter.address }}</p>
+            <p><strong>Phone:</strong> {{ shelter.phone_number }}</p>
+            <p><strong>Email:</strong> {{ shelter.email }}</p>
+            <p><strong>Website:</strong> <a href="{{ shelter.website }}">{{ shelter.website }}</a></p>
+            <p><strong>Description:</strong> {{ shelter.description }}</p>
+            <p><strong>Verified:</strong> {% if shelter.is_verified %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+            <a href="{% url 'shelter-edit' shelter.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'shelter-delete' shelter.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'shelter-list' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

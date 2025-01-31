@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% block content %}
+    <div class="container py-5">
+        <h2 class="text-center mb-4">{{ animal.name }}</h2>
+        <div class="card">
+            <img src="{{ animal.photo.url }}" class="card-img-top" alt="{{ animal.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ animal.name }}</h5>
+                <p><strong>Breed:</strong> {{ animal.breed }}</p>
+                <p><strong>Age:</strong> {{ animal.age }} years</p>
+                <p><strong>Description:</strong> {{ animal.description }}</p>
+                <p><strong>Medical History:</strong> {{ animal.medical_history }}</p>
+                <p><strong>Care Needs:</strong> {{ animal.care_needs }}</p>
+                <p><strong>Shelter:</strong> {{ animal.shelter.name }}</p>
+                <p><strong>Available for Adoption:</strong> {{ animal.available_for_adoption|yesno:"Yes,No" }}</p>
+                
+                <a href="{% url 'animal_showcase' %}" class="btn btn-danger">Back</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">{% if object %}Edit{% else %}Add{% endif %} Shelter</h2>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success btn-lg btn-block">{% if object %}Update{% else %}Create{% endif %} Shelter</button>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'shelter-list' %}" class="btn btn-secondary mt-3">Back</a>
+</div>
+{% endblock %}

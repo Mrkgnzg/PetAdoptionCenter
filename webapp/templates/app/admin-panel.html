@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Admin Dashboard</h2>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h4> Animals</h4>
+                    <h2>{{ animal_count }}</h2>
+
+                    <a href="{% url 'animal_list' %}" class="btn btn-light mt-3">View Animals List</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h4> Shelters</h4>
+                    <h2>{{ shelter_count }}</h2>
+
+                    <a href="{% url 'shelter-list' %}" class="btn btn-light mt-3">View Shelters List</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h4> Adoption Requests</h4>
+                    <h2>{{ adoption_request_count }}</h2>
+
+                    <a href="{% url 'adoption_request_list' %}" class="btn btn-light mt-3">View Adoption Requests List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Admin Button -->
+    <div class="text-center mt-5">
+        <a href="{% url 'signup' %}" class="btn btn-dark">Add New Admin</a>
+    </div>
+
+</div>
+{% endblock %}

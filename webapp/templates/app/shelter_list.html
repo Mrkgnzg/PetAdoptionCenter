@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Shelter List</h2>
+
+    <form method="GET" action="" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search shelters..." value="{{ request.GET.q }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <div class="mb-3 d-flex justify-content-between">
+        <a href="{% url 'admin-panel' %}" class="btn btn-secondary">⬅ Back</a>
+        <a href="{% url 'shelter-add' %}" class="btn btn-success">➕ Add Shelter</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shelter in shelters %}
+                    <tr>
+                        <td>{{ shelter.name }}</td>
+                        <td>{{ shelter.address }}</td>
+                        <td>{{ shelter.phone_number }}</td>
+                        <td>{{ shelter.email }}</td>
+                        <td>
+                            {% if shelter.website %}
+                                <a href="{{ shelter.website }}" target="_blank">Visit</a>
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'shelter-detail' shelter.pk %}" class="btn btn-info btn-sm">View</a>
+                            <a href="{% url 'shelter-edit' shelter.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'shelter-delete' shelter.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No shelters found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
