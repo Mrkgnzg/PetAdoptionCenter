@@ -68,49 +68,24 @@ class AdoptionRequestListView(ListView):
     model = AdoptionRequest
     template_name = 'app/adoption_request_list.html'
     context_object_name = 'adoption_requests'
-
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            adoption_requests = AdoptionRequest.objects.filter(
-                Q(adopter__icontains=query) | Q(animal__name__icontains=query)
-            )
-        else:
-            adoption_requests = AdoptionRequest.objects.all()
-
-        # Optionally add image URLs to each object
-        for request in adoption_requests:
-            # If there's an image, add the URL to the object
-            if request.image:
-                request.image_url = request.image.url
-            else:
-                request.image_url = None  # or set a default image URL
-        
-        return adoption_requests
         
 
 class AdoptionRequestCreateView(CreateView):
     model = AdoptionRequest
     form_class = AdoptionRequestForm
     template_name = 'app/adoption_request_form.html'
-    success_url = reverse_lazy('adoption_request_list')
+    success_url = reverse_lazy('animal_showcase')
 
 class AdoptionRequestDetailView(DetailView):
     model = AdoptionRequest
     template_name = 'app/adoption_request_detail.html'
-    context_object_name = 'request'
+    context_object_name = 'adoption_request'
 
 class AdoptionRequestUpdateView(UpdateView):
     model = AdoptionRequest
     form_class = AdoptionRequestForm
     template_name = 'app/adoption_update_form.html'
-    success_url = reverse_lazy('home')
-
-class AdoptionRequestUpdateView(UpdateView):
-    model = AdoptionRequest
-    form_class = AdoptionRequestForm
-    template_name = 'adoption_request_update.html'
-    success_url = reverse_lazy('adoption-request-list')  # Redirect after successful update
+    success_url = reverse_lazy('adoption_request_list')
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
