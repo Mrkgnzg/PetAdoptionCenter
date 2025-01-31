@@ -84,7 +84,7 @@ class AdoptionRequestDetailView(DetailView):
 class AdoptionRequestUpdateView(UpdateView):
     model = AdoptionRequest
     form_class = AdoptionRequestForm
-    template_name = 'app/adoption_update_form.html'
+    template_name = 'app/adoption_request_update.html'
     success_url = reverse_lazy('adoption_request_list')
 
     def get_form(self, form_class=None):
