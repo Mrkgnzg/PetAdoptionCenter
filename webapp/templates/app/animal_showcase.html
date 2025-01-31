@@ -2,6 +2,9 @@
 
 {% block content %}
 <div class="container py-5">
+    <div class="container">
+        <a href="{% url 'adoption_request_create' %}" class="btn btn-primary btn-lg">Adopt</a>
+    </div>
     <h2 class="text-center mb-4">Animal Showcase</h2>
     <div class="row">
         {% for animal in animals %}
